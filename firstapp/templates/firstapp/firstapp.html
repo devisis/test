@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mess Around 1</title>
+    <title>Mess Around 1  Todo List</title>
 </head>
 <body>
-    <h1>Mess Around 1:</h1>
+    <h1>Things I need to do:</h1>
+    {% for item in items %}
+        <tr>
+            {% if item.done %}
+                <td><strike>{{ item.name }}</strike></td>
+            {% else %}
+                <td>{{ item.name }}</td>
+            {% endif %}
+        </tr>
+    {% empty %}
+    <tr><td><h2>You have nothing to do</h2></td></tr>
+    {% endfor %}
+    <a href="/add">Add an Item</a>
 </body>
 </html>
